@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace fpl_api.Model
+namespace Core.Model
 {
     [Serializable]
     public class RawTeamStats

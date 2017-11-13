@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using Xunit;
+using Xunit.Extensions;
 using System.Collections.Generic;
-using fpl_api.Model;
-using fpl_api.Helpers;
+using Core.Model;
+using Core.Helpers;
 
-namespace Tests
+namespace CoreTests
 {
     [Trait("TestCategory", "UnitTests")]
     public class FixtureRetrieverTests

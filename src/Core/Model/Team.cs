@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace fpl_api.Model
+namespace Core.Model
 {
     public class Team
     {

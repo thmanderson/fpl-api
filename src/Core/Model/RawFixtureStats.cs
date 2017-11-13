@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace fpl_api.Model
+namespace Core.Model
 {
     [Serializable]
     public class RawFixtureStats

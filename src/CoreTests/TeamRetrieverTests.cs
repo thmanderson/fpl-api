@@ -1,8 +1,8 @@
 using System.Linq;
 using Xunit;
 using System.Collections.Generic;
-using fpl_api.Model;
-using fpl_api.Helpers;
+using Core.Model;
+using Core.Helpers;
 
 namespace Tests
 {

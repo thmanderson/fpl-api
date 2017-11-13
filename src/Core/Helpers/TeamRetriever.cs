@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using fpl_api.Model;
+using Core.Model;
 using Newtonsoft.Json.Linq;
 
-namespace fpl_api.Helpers
+namespace Core.Helpers
 {
     public static class TeamRetriever
     {
