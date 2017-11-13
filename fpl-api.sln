@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{5D9BE9E0-8252-42EE-9C83-05200A193252}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{14C4749A-1C1C-4FE3-9D43-7B2091270A38}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTests", "CoreTests\CoreTests.csproj", "{C8F84E2A-9F47-41AF-825E-783FD9898330}"
 EndProject
 Global
@@ -26,9 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C8F84E2A-9F47-41AF-825E-783FD9898330} = {14C4749A-1C1C-4FE3-9D43-7B2091270A38}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {073BC33D-9922-4B29-953B-5DE03C015CDC}
