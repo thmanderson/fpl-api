@@ -11,7 +11,7 @@ namespace CoreTests
     public class FixtureRetrieverTests
     {
         [Fact]
-        public void GetAllFixturesGivesFullList()
+        public void TotalFixturesReturnedEqualsFullSeason()
         {
             // Arrange & Act
             var fixtures = FixtureRetriever.GetAllFixtures();

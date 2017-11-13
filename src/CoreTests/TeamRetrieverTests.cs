@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Core.Model;
 using Core.Helpers;
 
-namespace Tests
+namespace CoreTests
 {
     [Trait("TestCategory", "UnitTests")]
     public class TeamRetrieverTests

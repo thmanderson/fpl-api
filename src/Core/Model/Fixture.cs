@@ -6,10 +6,9 @@ namespace Core.Model
 {
     public class Fixture
     {
-        public Fixture(RawFixtureStats rawStats)
-        {
-
-        }
+        private RawFixtureStats stats;
+        public Fixture(RawFixtureStats rawStats) => stats = rawStats;
+        public int Id { get => stats.Id; }
         public Team HomeTeam { get; private set; }
         public Team AwayTeam { get; private set; }
     }
