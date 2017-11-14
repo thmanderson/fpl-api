@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Core.Model
+namespace Core.Data
 {
     [Serializable]
     public class RawFixtureData

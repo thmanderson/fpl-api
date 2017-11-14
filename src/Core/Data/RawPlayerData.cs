@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Core.Model
+namespace Core.Data
 {
     [Serializable]
     public class RawPlayerData

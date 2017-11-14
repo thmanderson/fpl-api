@@ -1,6 +1,7 @@
 ﻿using System;
+using Core.Data;
 
-namespace Core.Model
+namespace Core
 {
     public class Team
     {

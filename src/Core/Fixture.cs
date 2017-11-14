@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Core.Data;
 
-namespace Core.Model
+namespace Core
 {
     public class Fixture
     {

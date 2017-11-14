@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Core.Model
+namespace Core.Data
 {
     [Serializable]
     public class RawTeamData
