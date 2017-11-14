@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace Core.Model
 {
     [Serializable]
-    public class RawTeamStats
+    public class RawTeamData
     {
         [JsonProperty("id")]
         public int Id { get; set; }

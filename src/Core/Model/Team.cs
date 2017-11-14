@@ -4,15 +4,15 @@ namespace Core.Model
 {
     public class Team
     {
-        private readonly RawTeamStats stats;
+        private readonly RawTeamData data;
 
-        public Team(RawTeamStats rawStats)
+        public Team(RawTeamData RawData)
         {
-            stats = rawStats ?? throw new ArgumentNullException(nameof(rawStats));
+            data = RawData ?? throw new ArgumentNullException(nameof(RawData));
         }
 
-        public int Id { get => stats.Id; }
-        public string Name { get { return stats.Name; } }
-        public string ShortName { get { return stats.ShortCode; } }
+        public int Id { get => data.Id; }
+        public string Name { get { return data.Name; } }
+        public string ShortName { get { return data.ShortCode; } }
     }
 }

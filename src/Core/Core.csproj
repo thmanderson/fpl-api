@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>fpl_api</AssemblyName>
-    <RootNamespace>fpl_api</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <RootNamespace>Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

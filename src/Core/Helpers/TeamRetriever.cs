@@ -17,7 +17,7 @@ namespace Core.Helpers
 
             foreach (var token in jsonData)
             {
-                var rawStats = token.ToObject<RawTeamStats>();
+                var rawStats = token.ToObject<RawTeamData>();
                 var team = new Team(rawStats);
                 yield return team;
             }

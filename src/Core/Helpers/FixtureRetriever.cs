@@ -17,7 +17,7 @@ namespace Core.Helpers
 
             foreach (var token in jsonData)
             {
-                var rawStats = token.ToObject<RawFixtureStats>();
+                var rawStats = token.ToObject<RawFixtureData>();
                 var fixture = new Fixture(rawStats);
                 yield return fixture;
             }
