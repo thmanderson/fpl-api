@@ -8,7 +8,6 @@ namespace Core.Model
     [Serializable]
     public class RawPlayerData
     {
-
         [JsonProperty("id")]
         public int Id { get; set; }
 

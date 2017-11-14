@@ -24,5 +24,16 @@ namespace Core.Helpers
                 yield return player;
             }
         }
+
+        public static Player GetPlayer(int playerId)
+        {
+            CookieContainer cookies = null;
+            var json = WebPageRequester.Get(player_data_page, ref cookies);
+            var jsonData = JArray.Parse(json);
+
+            var token = jsonData[playerId];
+            var rawStats = token.ToObject<RawPlayerData>();
+            return new Player(rawStats);
+        }
     }
 }

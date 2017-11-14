@@ -9,55 +9,62 @@ namespace Core.Model
     [Serializable]
     public class RawFixtureData
     {
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("kickoff_time_formatted")]
-        public string kickoff_time_formatted;
+        public string KickoffTimeFormatted { get; set; }
 
         [JsonProperty("started")]
-        public string started;
+        public bool Started { get; set; }
 
         [JsonProperty("event_day")]
-        public int event_day;
+        public int EventDay { get; set; }
 
         [JsonProperty("deadline_time")]
-        public string deadline_time;
+        public string DeadlineTime { get; set; }
 
         [JsonProperty("deadline_time_formatted")]
-        public string deadline_time_formatted;
+        public string DeadlineTimeFormatted { get; set; }
 
         [JsonProperty("team_h_difficulty")]
-        public int home_team_difficulty;
+        public int TeamHDifficulty { get; set; }
 
         [JsonProperty("team_a_difficulty")]
-        public int away_team_difficulty;
+        public int TeamADifficulty { get; set; }
 
         [JsonProperty("code")]
-        public int code;
+        public int Code { get; set; }
 
         [JsonProperty("kickoff_time")]
-        public string kickoff_time;
+        public string KickoffTime { get; set; }
 
         [JsonProperty("team_h_score")]
-        public int? home_team_score;
+        public int? TeamHScore { get; set; }
 
         [JsonProperty("team_a_score")]
-        public int? away_team_score;
+        public int? TeamAScore { get; set; }
 
         [JsonProperty("finished")]
-        public bool finished;
+        public bool Finished { get; set; }
 
         [JsonProperty("minutes")]
-        public int minutes;
+        public int Minutes { get; set; }
 
         [JsonProperty("provisional_start_time")]
-        public bool provisional_start_time;
+        public bool ProvisionalStartTime { get; set; }
 
         [JsonProperty("finished_provisional")]
-        public bool finished_provisional;
+        public bool FinishedProvisional { get; set; }
 
         [JsonProperty("event")]
-        public int event_id;
+        public int Event { get; set; }
+
+        [JsonProperty("team_a")]
+        public int TeamA { get; set; }
+
+        [JsonProperty("team_h")]
+        public int TeamH { get; set; }
     }
 }

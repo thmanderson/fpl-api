@@ -6,13 +6,10 @@ namespace Core.Model
 {
     public class Fixture
     {
-        private RawFixtureData data;
+        public RawFixtureData Data;
         public Fixture(RawFixtureData RawData)
         {
-            data = RawData ?? throw new ArgumentNullException(nameof(RawData));
+            Data = RawData ?? throw new ArgumentNullException(nameof(RawData));
         }
-        public int Id { get => data.Id; }
-        public Team HomeTeam { get; private set; }
-        public Team AwayTeam { get; private set; }
     }
 }
