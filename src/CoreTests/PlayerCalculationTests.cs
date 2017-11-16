@@ -1,4 +1,5 @@
-﻿using Core.Data;
+﻿using System.Collections.Generic;
+using Core.Data;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
@@ -51,6 +52,21 @@ namespace Core.Tests
             Assert.True(expectedValue == actualValue,
                 "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
 
+        }
+
+        [Fact]
+        public void PlayersByFirstname()
+        {
+            // Arrange & Act
+            string testName = "Raheem";
+            List<Player> output = PlayerCalculation.GetPlayerByName(testName);
+            int expectedCount = 1;
+            int actualCount = output.Count;
+
+            // Assert
+            Assert.True(expectedCount == actualCount, "Should be " + expectedCount + " player with first name " + testName + ", but " + actualCount + " were found." );
+
+        
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Core;
+using Core.Helpers;
 
 namespace Core
 {
@@ -32,6 +34,14 @@ namespace Core
             if (price == 0) return 0;
 
             return PP90 / price;
+        }
+
+        public static List<Player> GetPlayerByName(string name)
+        {
+            var players = DataRetriever.GetAllPlayers();
+            List<Player> playersList = players.ToList<Player>();
+            var test = playersList.FindAll(x => x.Data.FirstName == name);
+            return test;
         }
     }
 }
