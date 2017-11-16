@@ -40,6 +40,21 @@ namespace Core.Helpers
             return new Player(rawStats);
         }
 
+        public static Player GetPlayer(string secondName)
+        {
+            CookieContainer cookies = null;
+            var json = WebPageRequester.Get(player_data_page, ref cookies);
+            var jsonData = JArray.Parse(json);
+
+            foreach (var token in jsonData)
+            {
+                var rawStats = token.ToObject<RawPlayerData>();
+                if (rawStats.SecondName.Equals(secondName)) return new Player(rawStats);
+            }
+
+            return null;
+        }
+
         // Fixture Retrievers
         public static IEnumerable<Fixture> GetAllFixtures()
         {
