@@ -6,7 +6,7 @@ using Xunit;
 namespace Core.Tests
 {
     [Trait("TestCategory", "UnitTests")]
-    public class PlayerCalculationTests
+    public class PlayerTests
     {
         private JObject testPlayerJson;
         private RawPlayerData testRawData;
@@ -25,7 +25,7 @@ namespace Core.Tests
         {
             TestSetup();
             double expectedValue = 150;
-            double actualValue = PlayerCalculation.PointsPerGame(testPlayer);
+            double actualValue = testPlayer.PointsPerGame();
 
             Assert.True(expectedValue == actualValue, 
                 "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
@@ -36,7 +36,7 @@ namespace Core.Tests
         {
             TestSetup();
             double expectedValue = 900;
-            double actualValue = PlayerCalculation.PointsPer90(testPlayer);
+            double actualValue = testPlayer.PointsPer90();
 
             Assert.True(expectedValue == actualValue, 
                 "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
@@ -47,26 +47,11 @@ namespace Core.Tests
         {
             TestSetup();
             double expectedValue = 15;
-            double actualValue = PlayerCalculation.PointsPer90PerMillion(testPlayer);
+            double actualValue = testPlayer.PointsPer90PerMillion();
 
             Assert.True(expectedValue == actualValue,
                 "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
 
-        }
-
-        [Fact]
-        public void PlayersByFirstname()
-        {
-            // Arrange & Act
-            string testName = "Raheem";
-            List<Player> output = PlayerCalculation.GetPlayerByName(testName);
-            int expectedCount = 1;
-            int actualCount = output.Count;
-
-            // Assert
-            Assert.True(expectedCount == actualCount, "Should be " + expectedCount + " player with first name " + testName + ", but " + actualCount + " were found." );
-
-        
         }
     }
 }

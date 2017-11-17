@@ -1,11 +1,8 @@
 ﻿using System.Linq;
 using Xunit;
-using Xunit.Extensions;
 using System.Collections.Generic;
-using Core;
-using Core.Helpers;
 
-namespace Core.Tests
+namespace Core.Helpers.Tests
 {
     [Trait("TestCategory", "UnitTests")]
     public class DataRetrieverTests
@@ -28,13 +25,25 @@ namespace Core.Tests
         public void TotalPlayersReturnedEqualsFullSeason()
         {
             // Arrange & Act
-            var players = DataRetriever.GetAllPlayers();
-            List<Player> playerList = players.ToList();
+            List<Player> playerList = DataRetriever.GetAllPlayers().ToList();
             int expectedCount = 566;
             int actualCount = playerList.Count;
 
             // Assert
             Assert.True(actualCount == expectedCount, "Number of players, " + actualCount + ", is greater than expected value," + expectedCount + ". ");
+        }
+
+        [Fact]
+        public void PlayersByFirstname()
+        {
+            // Arrange & Act
+            string testName = "Sterling";
+            List<Player> output = DataRetriever.GetPlayer(testName).ToList();
+            int expectedCount = 1;
+            int actualCount = output.Count;
+
+            // Assert
+            Assert.True(expectedCount == actualCount, "Should be " + expectedCount + " player with second name " + testName + ", but " + actualCount + " were found.");
         }
 
         [Fact]
