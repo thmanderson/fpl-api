@@ -9,14 +9,14 @@ namespace Core.Tests
     public class PlayerTests
     {
         private JObject testPlayerJson;
-        private RawPlayerData testRawData;
+        private PlayerDataSummary testRawData;
         private Player testPlayer;
 
         internal void TestSetup()
         {
             testPlayerJson = JObject.Parse
                 (@"{'minutes':15,'points_per_game':150,'total_points':150,'now_cost':60}");
-            testRawData = testPlayerJson.ToObject<RawPlayerData>();
+            testRawData = testPlayerJson.ToObject<PlayerDataSummary>();
             testPlayer = new Player(testRawData);
         }
 

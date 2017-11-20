@@ -16,14 +16,14 @@ namespace Core.Helpers
         private static string team_data_page = root_api_page + "/teams";
 
         // Detailed Player Retriever
-        public static DetailedPlayerData GetDetailedPlayerSummary(int id)
+        public static PlayerDataDetailed GetDetailedPlayerSummary(int id)
         {
             CookieContainer cookies = null;
             var detailed_page = detailed_player_root_page + id;
             var json = WebPageRequester.Get(detailed_page, ref cookies);
             var jsonData = JObject.Parse(json);
             
-            var rawStats = jsonData.ToObject<DetailedPlayerData>();
+            var rawStats = jsonData.ToObject<PlayerDataDetailed>();
             return rawStats;
 
         }
@@ -37,7 +37,7 @@ namespace Core.Helpers
 
             foreach (var token in jsonData)
             {
-                var rawStats = token.ToObject<RawPlayerData>();
+                var rawStats = token.ToObject<PlayerDataSummary>();
                 var player = new Player(rawStats);
                 yield return player;
             }
@@ -50,7 +50,7 @@ namespace Core.Helpers
             var jsonData = JArray.Parse(json);
 
             var token = jsonData[playerId];
-            var rawStats = token.ToObject<RawPlayerData>();
+            var rawStats = token.ToObject<PlayerDataSummary>();
             return new Player(rawStats);
         }
 
@@ -62,7 +62,7 @@ namespace Core.Helpers
 
             foreach (var token in jsonData)
             {
-                var rawStats = token.ToObject<RawPlayerData>();
+                var rawStats = token.ToObject<PlayerDataSummary>();
                 if (rawStats.SecondName.Equals(secondName)) yield return new Player(rawStats);
             }
         }

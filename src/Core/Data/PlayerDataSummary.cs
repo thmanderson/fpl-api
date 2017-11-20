@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Core.Data
 {
     [Serializable]
-    public class RawPlayerData
+    public class PlayerDataSummary
     {
         [JsonProperty("id")]
         public int Id { get; set; }
