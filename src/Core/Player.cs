@@ -5,8 +5,8 @@ namespace Core
 {
     public class Player
     {
-        public RawPlayerData Data;
-        public Player(RawPlayerData RawData)
+        public PlayerDataSummary Data;
+        public Player(PlayerDataSummary RawData)
         {
             Data = RawData ?? throw new ArgumentNullException(nameof(RawData));
         }
