@@ -11,8 +11,22 @@ namespace Core.Helpers
     {
         private static string root_api_page = "https://fantasy.premierleague.com/drf";
         private static string player_data_page = root_api_page + "/elements";
+        private static string detailed_player_root_page = root_api_page + "/element-summary/";
         private static string fixture_data_page = root_api_page + "/fixtures";
         private static string team_data_page = root_api_page + "/teams";
+
+        // Detailed Player Retriever
+        public static player_summary GetDetailedPlayerSummary(int id)
+        {
+            CookieContainer cookies = null;
+            var detailed_page = detailed_player_root_page + id;
+            var json = WebPageRequester.Get(detailed_page, ref cookies);
+            var jsonData = JObject.Parse(json);
+            
+            var rawStats = jsonData.ToObject<player_summary>();
+            return rawStats;
+
+        }
 
         // Player Retrievers
         public static IEnumerable<Player> GetAllPlayers()

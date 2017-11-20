@@ -10,6 +10,7 @@ namespace Core
         {
             Data = RawData ?? throw new ArgumentNullException(nameof(RawData));
         }
+
         public double PointsPerGame()
         {
             double result = double.Parse(this.Data.PointsPerGame);

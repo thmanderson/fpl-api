@@ -26,7 +26,7 @@ namespace Core.Helpers.Tests
         {
             // Arrange & Act
             List<Player> playerList = DataRetriever.GetAllPlayers().ToList();
-            int expectedCount = 566;
+            int expectedCount = 568;
             int actualCount = playerList.Count;
 
             // Assert
@@ -55,6 +55,14 @@ namespace Core.Helpers.Tests
 
             // Assert
             Assert.True(teamsList.Count == 20);
+        }
+
+        [Fact]
+        public void CanGetDetailedPlayer()
+        {
+            var detailedPlayer = DataRetriever.GetDetailedPlayerSummary(1);
+
+            Assert.True(detailedPlayer.PreviousSeasons[0].Minutes == 1620);
         }
     }
 }
