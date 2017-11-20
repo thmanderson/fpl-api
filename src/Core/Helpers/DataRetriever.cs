@@ -16,14 +16,14 @@ namespace Core.Helpers
         private static string team_data_page = root_api_page + "/teams";
 
         // Detailed Player Retriever
-        public static player_summary GetDetailedPlayerSummary(int id)
+        public static DetailedPlayerData GetDetailedPlayerSummary(int id)
         {
             CookieContainer cookies = null;
             var detailed_page = detailed_player_root_page + id;
             var json = WebPageRequester.Get(detailed_page, ref cookies);
             var jsonData = JObject.Parse(json);
             
-            var rawStats = jsonData.ToObject<player_summary>();
+            var rawStats = jsonData.ToObject<DetailedPlayerData>();
             return rawStats;
 
         }
