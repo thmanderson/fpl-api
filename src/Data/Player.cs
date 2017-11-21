@@ -21,17 +21,6 @@ namespace FPL.Data
         }
 
         /// <summary>
-        /// Creates a detailed instance of a player.
-        /// </summary>
-        /// <param name="dataSummary">Player summary.</param>
-        /// <param name="dataDetailed">Detailed player data.</param>
-        public Player(PlayerDataSummary dataSummary, PlayerDataDetailed dataDetailed)
-        {
-            this.DataSummary = dataSummary ?? throw new ArgumentNullException(nameof(dataSummary));
-            this.DataDetailed = dataDetailed ?? throw new ArgumentNullException(nameof(dataDetailed));
-        }
-
-        /// <summary>
         /// Points per game for this player - not including games missed.
         /// </summary>
         /// <returns>The average number of points per game.</returns>
