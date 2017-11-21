@@ -6,8 +6,4 @@
     <RootNamespace>FPL.Core</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj" />
-  </ItemGroup>
-
 </Project>

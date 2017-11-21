@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using FPL.Data;
+using FPL.Core;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace FPL.Core.Tests
+namespace FPL.Data.Tests
 {
     [Trait("TestCategory", "UnitTests")]
     public class PlayerTests
@@ -36,7 +36,7 @@ namespace FPL.Core.Tests
         {
             TestSetup();
             double expectedValue = 900;
-            double actualValue = testPlayer.PointsPer90();
+            double actualValue = testPlayer.PointsPerNinety();
 
             Assert.True(expectedValue == actualValue, 
                 "Expected Value for " + testPlayer.DataSummary.FirstName + " " + testPlayer.DataSummary.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
@@ -47,7 +47,7 @@ namespace FPL.Core.Tests
         {
             TestSetup();
             double expectedValue = 15;
-            double actualValue = testPlayer.PointsPer90PerMillion();
+            double actualValue = testPlayer.PointsPerNinetyPerMillion();
 
             Assert.True(expectedValue == actualValue,
                 "Expected Value for " + testPlayer.DataSummary.FirstName + " " + testPlayer.DataSummary.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);

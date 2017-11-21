@@ -1,12 +1,12 @@
 ﻿using System;
-using FPL.Data;
+using FPL.Core;
 
-namespace FPL.Core
+namespace FPL.Data
 {
     /// <summary>
     /// Represents an individual football player. Wraps around and expands on instances of <see cref="PlayerDataSummary"/> and <see cref="PlayerDataDetailed"/>.
     /// </summary>
-    public class Player
+    public class Player : IPlayer
     {
         public readonly PlayerDataDetailed DataDetailed;
         public readonly PlayerDataSummary DataSummary;
@@ -46,7 +46,7 @@ namespace FPL.Core
         /// Points for every 90 minutes played for this player.
         /// </summary>
         /// <returns>The average number of points for every 90 minutes played in total.</returns>
-        public double PointsPer90()
+        public double PointsPerNinety()
         {
             double points = this.DataSummary.TotalPoints;
             double minutes = this.DataSummary.Minutes;
@@ -60,9 +60,9 @@ namespace FPL.Core
         /// Points per 90 <see cref="PointsPer90"/> per £1m of player cost.
         /// </summary>
         /// <returns>The average number of points for every 90 minutes played, for every £1m player cost.</returns>
-        public double PointsPer90PerMillion()
+        public double PointsPerNinetyPerMillion()
         {
-            double PP90 = this.PointsPer90();
+            double PP90 = this.PointsPerNinety();
             double price = this.DataSummary.NowCost;
 
             if (price == 0) return 0;
