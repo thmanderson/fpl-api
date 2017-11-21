@@ -12,9 +12,8 @@ namespace FPL.Core
     /// </summary>
     public class Player : IPlayer
     {
-        private PlayerDataSummary DataSummary;
-        private PlayerDataDetailed DataDetailed;
-
+        public PlayerDataSummary DataSummary { get; private set; }
+        public PlayerDataDetailed DataDetailed { get; private set; }
         public int Id => DataSummary.Id;
         public string FirstName => DataSummary.FirstName;
         public string SecondName => DataSummary.SecondName;
@@ -24,8 +23,9 @@ namespace FPL.Core
         /// </summary>
         /// <param name="PlayerId">Player ID from the official Fantasy Premier League API.</param>
         /// <param name="GetDetails">If true, will initialize additional details <see cref="PlayerDataDetailed"/>, such as week-by-week score.
-        /// Not recommended if you are creating players in bulk, and these details can be initialized later, <see cref="UpdatePlayerDetails"/></param>
-        public Player(int PlayerId, bool GetDetails)
+        /// Not recommended if you are creating players in bulk, and these details can be initialized later, <see cref="UpdatePlayerDetails"/>.
+        /// Defaults to <see cref="false"/>.</param>
+        public Player(int PlayerId, bool GetDetails = false)
         {
             this.DataSummary = DataGetter.GetPlayerSummary(PlayerId);
             if(GetDetails) this.DataDetailed = DataGetter.GetPlayerDetails(PlayerId);
