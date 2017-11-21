@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
+﻿using System.Net;
+using Newtonsoft.Json.Linq;
 
-namespace FPL.Data.Helpers
+namespace FPL.Core.Helpers
 {
     public static class WebPageRequester
     {
@@ -21,6 +18,20 @@ namespace FPL.Data.Helpers
         public static string Get(string url, ref CookieContainer refCookies)
         {
             return MakeRequest(url, "text/html", "GET", null, ref refCookies);
+        }
+
+        public static JObject GetJObject(string url)
+        {
+            CookieContainer cookies = null;
+            var json = WebPageRequester.Get(url, ref cookies);
+            return JObject.Parse(json);
+        }
+
+        public static JArray GetJArray(string url)
+        {
+            CookieContainer cookies = null;
+            var json = WebPageRequester.Get(url, ref cookies);
+            return JArray.Parse(json);
         }
 
         private static string MakeRequest(string url, string contenttype, string method, string data, ref CookieContainer refCookies)

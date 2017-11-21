@@ -1,15 +1,17 @@
 ﻿using System;
-using FPL.Core;
+using FPL.Core.Data;
+using FPL.Core.Helpers;
+using FPL.Core.Model;
 
-namespace FPL.Data
+namespace FPL.Core
 {
     /// <summary>
     /// Represents an individual football player. Wraps around and expands on instances of <see cref="PlayerDataSummary"/> and <see cref="PlayerDataDetailed"/>.
     /// </summary>
     public class Player : IPlayer
     {
-        public readonly PlayerDataDetailed DataDetailed;
         public readonly PlayerDataSummary DataSummary;
+        public readonly PlayerDataDetailed DataDetailed;
 
         /// <summary>
         /// Creates an instance of player, using only summary data. This will be able to provide totals for the season, but not fixture-by-fixture, or totals for previous seasons.
@@ -18,6 +20,10 @@ namespace FPL.Data
         public Player(PlayerDataSummary dataSummary)
         {
             this.DataSummary = dataSummary ?? throw new ArgumentNullException(nameof(dataSummary));
+        }
+
+        public void UpdatePlayerDetails(PlayerGetter dataGetter)
+        {
         }
 
         /// <summary>

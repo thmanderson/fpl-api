@@ -1,56 +1,33 @@
 ﻿using System.Collections.Generic;
 using System.Net;
-using FPL.Core;
+using FPL.Core.Helpers;
+using FPL.Core.Data;
+using FPL.Core.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace FPL.Data.Helpers
+namespace FPL.Core
 {
-    public class DataRetriever : IPlayerGetter
+    public class PlayerGetter : IPlayerGetter
     {
-        private static string root_api_page = "https://fantasy.premierleague.com/drf";
-        private static string player_data_page = root_api_page + "/elements";
-        private static string detailed_player_root_page = root_api_page + "/element-summary/";
-        // private static string fixture_data_page = root_api_page + "/fixtures";
-        // private static string team_data_page = root_api_page + "/teams";
-
         public IPlayer GetPlayer(int PlayerId)
         {
-            var jsonData = GetAllPlayersRaw();
-            var token = jsonData[PlayerId];
-            var summary = token.ToObject<PlayerDataSummary>();
-
-            return new Player(summary);
+            var playerSummary = DataGetter.GetPlayerSummary(PlayerId);
+            return new Player(playerSummary);
         }
 
         public IPlayer GetPlayer(string FirstName, string SecondName)
         {
-            var jsonData = GetAllPlayersRaw();
-            foreach (var token in jsonData)
-            {
-                var rawStats = token.ToObject<PlayerDataSummary>();
-                if (rawStats.FirstName == FirstName && rawStats.SecondName == SecondName) return new Player(rawStats);
-            }
-
-            return null;
+            var playerSummary = DataGetter.GetPlayerSummary(FirstName, SecondName);
+            return new Player(playerSummary);
         }
 
         public IEnumerable<IPlayer> GetAllPlayers()
         {
-            var jsonData = GetAllPlayersRaw();
-
-            foreach (var token in jsonData)
+            foreach (var data in DataGetter.GetPlayerSummaryAll())
             {
-                var rawStats = token.ToObject<PlayerDataSummary>();
-                yield return new Player(rawStats);
+                yield return new Player(data);
             }
-        }
-
-        internal JArray GetAllPlayersRaw()
-        {
-            CookieContainer cookies = null;
-            var json = WebPageRequester.Get(player_data_page, ref cookies);
-            return JArray.Parse(json);
         }
 
         /*

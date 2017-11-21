@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace FPL.Data
+namespace FPL.Core.Data
 {
     [Serializable]
     public class TeamData

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace FPL.Data
+namespace FPL.Core.Data
 {
     [Serializable]
     public class PlayerDataSummary

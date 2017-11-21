@@ -6,4 +6,9 @@
     <RootNamespace>FPL.Core</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.0" />
+  </ItemGroup>
+
 </Project>

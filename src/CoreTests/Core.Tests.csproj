@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>FPL.Data.Tests</AssemblyName>
+    <AssemblyName>FPL.Core.Tests</AssemblyName>
 
-    <RootNamespace>FPL.Data.Tests</RootNamespace>
+    <RootNamespace>FPL.Core.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
 
 </Project>

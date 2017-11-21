@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FPL.Core
+namespace FPL.Core.Model
 {
     public interface IPlayer
     {

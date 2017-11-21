@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using FPL.Core;
+using FPL.Core.Data;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace FPL.Data.Tests
+namespace FPL.Core.Data.Tests
 {
     [Trait("TestCategory", "UnitTests")]
     public class PlayerTests

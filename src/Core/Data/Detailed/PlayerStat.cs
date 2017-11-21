@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace FPL.Data.Detailed
+namespace FPL.Core.Data.Detailed
 {
     public class PlayerStat
     {

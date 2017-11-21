@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace FPL.Data.Detailed
+namespace FPL.Core.Data.Detailed
 {
     /// <summary>
     /// Summary of the current fixture - i.e. the most recent result, or the fixture currently being played.
