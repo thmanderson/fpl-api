@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using FPL.Core.Data;
 using FPL.Core.Helpers;
 using FPL.Core.Model;
 
+[assembly:InternalsVisibleTo("FPL.Core.Tests")]
 namespace FPL.Core
 {
     /// <summary>
@@ -10,20 +12,39 @@ namespace FPL.Core
     /// </summary>
     public class Player : IPlayer
     {
-        public readonly PlayerDataSummary DataSummary;
-        public readonly PlayerDataDetailed DataDetailed;
+        // Properties
 
-        /// <summary>
-        /// Creates an instance of player, using only summary data. This will be able to provide totals for the season, but not fixture-by-fixture, or totals for previous seasons.
-        /// </summary>
-        /// <param name="dataSummary">Player summary.</param>
-        public Player(PlayerDataSummary dataSummary)
+        private PlayerDataSummary DataSummary;
+        private PlayerDataDetailed DataDetailed;
+
+        public int Id => DataSummary.Id;
+        public string FirstName => DataSummary.FirstName;
+        public string SecondName => DataSummary.SecondName;
+
+        
+        // Constructors
+        
+        public Player(int PlayerId, bool GetDetails)
         {
-            this.DataSummary = dataSummary ?? throw new ArgumentNullException(nameof(dataSummary));
+            this.DataSummary = DataGetter.GetPlayerSummary(PlayerId);
+            if(GetDetails) this.DataDetailed = DataGetter.GetPlayerDetails(PlayerId);
         }
 
-        public void UpdatePlayerDetails(PlayerGetter dataGetter)
+        /// <summary>
+        /// Internal constructor for testing.
+        /// </summary>
+        /// <param name="dummySummary">Player summary with dummy values for testing.</param>
+        internal Player(PlayerDataSummary dummySummary)
         {
+            this.DataSummary = dummySummary;
+        }
+
+
+        // Methods
+
+        public void UpdatePlayerDetails()
+        {
+            this.DataDetailed = DataGetter.GetPlayerDetails(this.Id);
         }
 
         /// <summary>
