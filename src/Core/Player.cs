@@ -83,5 +83,13 @@ namespace FPL.Core
 
             return PP90 / price;
         }
+
+        public double Form()
+        {
+            throw new NotImplementedException();
+
+            // Make sure we have data for all gameweeks this year.
+            if (this.DataDetailed == null) UpdatePlayerDetails();
+        }
     }
 }

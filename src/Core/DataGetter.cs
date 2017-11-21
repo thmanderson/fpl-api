@@ -14,6 +14,7 @@ namespace FPL.Core
         private static string fixture_data_page = root_api_page + "/fixtures";
         private static string team_data_page = root_api_page + "/teams";
 
+        // Player Data Getters
         public static IEnumerable<PlayerDataSummary> GetPlayerSummaryAll()
         {
             var jsonData = WebPageRequester.GetJArray(player_data_page);
