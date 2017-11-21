@@ -1,10 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Core.Data
+namespace FPL.Data
 {
     [Serializable]
-    public class RawTeamData
+    public class TeamData
     {
         [JsonProperty("id")]
         public int Id { get; set; }

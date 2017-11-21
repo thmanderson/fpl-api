@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Core.Data
+namespace FPL.Data.Detailed
 {
-    [Serializable]
-    public class RawFixtureData
+    public class FutureFixture
     {
 
         [JsonProperty("id")]
@@ -16,23 +14,20 @@ namespace Core.Data
         [JsonProperty("kickoff_time_formatted")]
         public string KickoffTimeFormatted { get; set; }
 
-        [JsonProperty("started")]
-        public bool Started { get; set; }
+        [JsonProperty("event_name")]
+        public string EventName { get; set; }
 
-        [JsonProperty("event_day")]
-        public int EventDay { get; set; }
+        [JsonProperty("opponent_name")]
+        public string OpponentName { get; set; }
 
-        [JsonProperty("deadline_time")]
-        public string DeadlineTime { get; set; }
+        [JsonProperty("opponent_short_name")]
+        public string OpponentShortName { get; set; }
 
-        [JsonProperty("deadline_time_formatted")]
-        public string DeadlineTimeFormatted { get; set; }
+        [JsonProperty("is_home")]
+        public bool IsHome { get; set; }
 
-        [JsonProperty("team_h_difficulty")]
-        public int TeamHDifficulty { get; set; }
-
-        [JsonProperty("team_a_difficulty")]
-        public int TeamADifficulty { get; set; }
+        [JsonProperty("difficulty")]
+        public int Difficulty { get; set; }
 
         [JsonProperty("code")]
         public int Code { get; set; }
@@ -41,10 +36,10 @@ namespace Core.Data
         public string KickoffTime { get; set; }
 
         [JsonProperty("team_h_score")]
-        public int? TeamHScore { get; set; }
+        public object TeamHScore { get; set; }
 
         [JsonProperty("team_a_score")]
-        public int? TeamAScore { get; set; }
+        public object TeamAScore { get; set; }
 
         [JsonProperty("finished")]
         public bool Finished { get; set; }

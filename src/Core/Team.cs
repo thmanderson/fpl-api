@@ -1,15 +1,11 @@
 ﻿using System;
-using Core.Data;
 
-namespace Core
+namespace FPL.Core
 {
     public class Team
     {
-        public readonly RawTeamData Data;
-
-        public Team(RawTeamData RawData)
+        public Team()
         {
-            Data = RawData ?? throw new ArgumentNullException(nameof(RawData));
         }
     }
 }

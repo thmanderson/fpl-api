@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Net;
-using Core;
-using Core.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Core.Helpers
+namespace FPL.Data.Helpers
 {
     public static class DataRetriever
     {
@@ -29,7 +27,7 @@ namespace Core.Helpers
         }
 
         // Player Retrievers
-        public static IEnumerable<Player> GetAllPlayers()
+        public static IEnumerable<PlayerDataSummary> GetAllPlayers()
         {
             CookieContainer cookies = null;
             var json = WebPageRequester.Get(player_data_page, ref cookies);
@@ -38,12 +36,11 @@ namespace Core.Helpers
             foreach (var token in jsonData)
             {
                 var rawStats = token.ToObject<PlayerDataSummary>();
-                var player = new Player(rawStats);
-                yield return player;
+                yield return rawStats;
             }
         }
 
-        public static Player GetPlayer(int playerId)
+        public static PlayerDataSummary GetPlayer(int playerId)
         {
             CookieContainer cookies = null;
             var json = WebPageRequester.Get(player_data_page, ref cookies);
@@ -51,10 +48,10 @@ namespace Core.Helpers
 
             var token = jsonData[playerId];
             var rawStats = token.ToObject<PlayerDataSummary>();
-            return new Player(rawStats);
+            return rawStats;
         }
 
-        public static IEnumerable<Player> GetPlayer(string secondName)
+        public static IEnumerable<PlayerDataSummary> GetPlayer(string secondName)
         {
             CookieContainer cookies = null;
             var json = WebPageRequester.Get(player_data_page, ref cookies);
@@ -63,12 +60,12 @@ namespace Core.Helpers
             foreach (var token in jsonData)
             {
                 var rawStats = token.ToObject<PlayerDataSummary>();
-                if (rawStats.SecondName.Equals(secondName)) yield return new Player(rawStats);
+                if (rawStats.SecondName.Equals(secondName)) yield return rawStats;
             }
         }
 
         // Fixture Retrievers
-        public static IEnumerable<Fixture> GetAllFixtures()
+        public static IEnumerable<FixtureData> GetAllFixtures()
         {
             CookieContainer cookies = null;
             var json = WebPageRequester.Get(fixture_data_page, ref cookies);
@@ -76,14 +73,13 @@ namespace Core.Helpers
 
             foreach (var token in jsonData)
             {
-                var rawStats = token.ToObject<RawFixtureData>();
-                var fixture = new Fixture(rawStats);
-                yield return fixture;
+                var rawStats = token.ToObject<FixtureData>();
+                yield return rawStats;
             }
         }
 
         // Team Retrievers
-        public static IEnumerable<Team> GetAllTeams()
+        public static IEnumerable<TeamData> GetAllTeams()
         {
             CookieContainer cookies = null;
             var json = WebPageRequester.Get(team_data_page, ref cookies);
@@ -91,9 +87,8 @@ namespace Core.Helpers
 
             foreach (var token in jsonData)
             {
-                var rawStats = token.ToObject<RawTeamData>();
-                var team = new Team(rawStats);
-                yield return team;
+                var rawStats = token.ToObject<TeamData>();
+                yield return rawStats;
             }
         }
 

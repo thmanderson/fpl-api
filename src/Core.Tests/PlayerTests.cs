@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Core.Data;
+using FPL.Data;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace Core.Tests
+namespace FPL.Core.Tests
 {
     [Trait("TestCategory", "UnitTests")]
     public class PlayerTests
@@ -28,7 +28,7 @@ namespace Core.Tests
             double actualValue = testPlayer.PointsPerGame();
 
             Assert.True(expectedValue == actualValue, 
-                "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
+                "Expected Value for " + testPlayer.DataSummary.FirstName + " " + testPlayer.DataSummary.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace Core.Tests
             double actualValue = testPlayer.PointsPer90();
 
             Assert.True(expectedValue == actualValue, 
-                "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
+                "Expected Value for " + testPlayer.DataSummary.FirstName + " " + testPlayer.DataSummary.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Core.Tests
             double actualValue = testPlayer.PointsPer90PerMillion();
 
             Assert.True(expectedValue == actualValue,
-                "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
+                "Expected Value for " + testPlayer.DataSummary.FirstName + " " + testPlayer.DataSummary.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
 
         }
     }

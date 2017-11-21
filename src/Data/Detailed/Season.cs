@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Core.Data.Detailed
+namespace FPL.Data.Detailed
 {
     /// <summary>
     /// Summary of a past season in FPL for a specific player, shown as "history_past" in the raw JSON.

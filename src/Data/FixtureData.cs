@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace Core.Data.Detailed
+namespace FPL.Data
 {
-    /// <summary>
-    /// Summary of the underlying statistics for the a fixture.
-    /// </summary>
-    public class Fixture
+    [Serializable]
+    public class FixtureData
     {
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -28,8 +28,11 @@ namespace Core.Data.Detailed
         [JsonProperty("deadline_time_formatted")]
         public string DeadlineTimeFormatted { get; set; }
 
-        [JsonProperty("stats")]
-        public object[] Stats { get; set; }
+        [JsonProperty("team_h_difficulty")]
+        public int TeamHDifficulty { get; set; }
+
+        [JsonProperty("team_a_difficulty")]
+        public int TeamADifficulty { get; set; }
 
         [JsonProperty("code")]
         public int Code { get; set; }
@@ -38,10 +41,10 @@ namespace Core.Data.Detailed
         public string KickoffTime { get; set; }
 
         [JsonProperty("team_h_score")]
-        public int TeamHScore { get; set; }
+        public int? TeamHScore { get; set; }
 
         [JsonProperty("team_a_score")]
-        public int TeamAScore { get; set; }
+        public int? TeamAScore { get; set; }
 
         [JsonProperty("finished")]
         public bool Finished { get; set; }

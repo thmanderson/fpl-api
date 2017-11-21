@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 
-namespace Core.Helpers
+namespace FPL.Data.Helpers
 {
     public static class WebPageRequester
     {

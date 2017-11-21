@@ -1,27 +1,35 @@
 ﻿using System;
-using Core.Data;
+using FPL.Data;
 
-namespace Core
+namespace FPL.Core
 {
     public class Player
     {
-        public PlayerDataSummary Data;
-        public Player(PlayerDataSummary RawData)
+        public PlayerDataDetailed DataDetailed;
+        public PlayerDataSummary DataSummary;
+
+        public Player(PlayerDataSummary dataSummary)
         {
-            Data = RawData ?? throw new ArgumentNullException(nameof(RawData));
+            this.DataSummary = dataSummary ?? throw new ArgumentNullException(nameof(dataSummary));
+        }
+
+        public Player(PlayerDataSummary dataSummary, PlayerDataDetailed dataDetailed)
+        {
+            this.DataSummary = dataSummary ?? throw new ArgumentNullException(nameof(dataSummary));
+            this.DataDetailed = dataDetailed ?? throw new ArgumentNullException(nameof(dataDetailed));
         }
 
         public double PointsPerGame()
         {
-            double result = double.Parse(this.Data.PointsPerGame);
+            double result = double.Parse(this.DataSummary.PointsPerGame);
 
             return result;
         }
 
         public double PointsPer90()
         {
-            double points = this.Data.TotalPoints;
-            double minutes = this.Data.Minutes;
+            double points = this.DataSummary.TotalPoints;
+            double minutes = this.DataSummary.Minutes;
 
             if (minutes == 0) return 0;
 
@@ -31,7 +39,7 @@ namespace Core
         public double PointsPer90PerMillion()
         {
             double PP90 = this.PointsPer90();
-            double price = this.Data.NowCost;
+            double price = this.DataSummary.NowCost;
 
             if (price == 0) return 0;
 

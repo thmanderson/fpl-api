@@ -1,8 +1,9 @@
 ﻿using System.Linq;
-using Xunit;
 using System.Collections.Generic;
+using FPL.Data.Helpers;
+using Xunit;
 
-namespace Core.Helpers.Tests
+namespace FPL.Data.Helpers.Tests
 {
     [Trait("TestCategory", "UnitTests")]
     public class DataRetrieverTests
@@ -11,8 +12,7 @@ namespace Core.Helpers.Tests
         public void TotalFixturesReturnedEqualsFullSeason()
         {
             // Arrange & Act
-            var fixtures = DataRetriever.GetAllFixtures();
-            List<Fixture> fixturesList = fixtures.ToList();
+            List<FixtureData> fixturesList = DataRetriever.GetAllFixtures().ToList();
 
             int expectedCount = 380;
             int actualCount = fixturesList.Count;
@@ -25,8 +25,9 @@ namespace Core.Helpers.Tests
         public void TotalPlayersReturnedEqualsFullSeason()
         {
             // Arrange & Act
-            List<Player> playerList = DataRetriever.GetAllPlayers().ToList();
-            int expectedCount = 568;
+            List<PlayerDataSummary> playerList = DataRetriever.GetAllPlayers().ToList();
+
+            int expectedCount = 569;
             int actualCount = playerList.Count;
 
             // Assert
@@ -38,7 +39,7 @@ namespace Core.Helpers.Tests
         {
             // Arrange & Act
             string testName = "Sterling";
-            List<Player> output = DataRetriever.GetPlayer(testName).ToList();
+            List<PlayerDataSummary> output = DataRetriever.GetPlayer(testName).ToList();
             int expectedCount = 1;
             int actualCount = output.Count;
 
@@ -50,8 +51,7 @@ namespace Core.Helpers.Tests
         public void GetAllTeamsGivesFullList()
         {
             // Arrange & Act
-            var teams = DataRetriever.GetAllTeams();
-            List<Team> teamsList = teams.ToList();
+            var teamsList = DataRetriever.GetAllTeams().ToList();
 
             // Assert
             Assert.True(teamsList.Count == 20);

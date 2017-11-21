@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Core.Data.Detailed
+namespace FPL.Data.Detailed
 {
     public class FixtureStats
     {
