@@ -50,5 +50,23 @@ namespace FPL.Core
             var jsonData = WebPageRequester.GetJObject(detailed_player_root_page + PlayerId);
             return jsonData.ToObject<PlayerDataDetailed>();
         }
+
+        // Team Getters
+        public static IEnumerable<TeamData> GetAllTeams()
+        {
+            var jsonData = WebPageRequester.GetJArray(team_data_page);
+
+            foreach (var token in jsonData)
+            {
+                var rawStats = token.ToObject<TeamData>();
+                yield return rawStats;
+            }
+        }
+
+        public static TeamData GetTeam(int TeamId)
+        {
+            var jsonData = WebPageRequester.GetJArray(team_data_page);
+            return jsonData[TeamId].ToObject<TeamData>();
+        }
     }
 }

@@ -49,5 +49,29 @@ namespace FPL.Core.Tests
             Assert.True(ExpectedExists.Equals(ActualExists), "Searching if player " + FirstName + " " + SecondName + " exists by name failed");
 
         }
+
+        [Fact]
+        public void TotalNumberOfTeamsIsCorrect()
+        {
+            // Arrange & Act
+            var teams = DataGetter.GetAllTeams().ToList();
+            int expectedCount = 20;
+            int actualCount = teams.Count();
+
+            // Assert
+            Assert.True(expectedCount == actualCount, "Expected to find " + expectedCount + " teams in the league, but actually found " + actualCount);
+        }
+
+        [Theory]
+        [InlineData(0, "Arsenal")]
+        public void FindTeamByIdWorks(int TeamId, string expectedTeam)
+        {
+            // Arrange & Act
+            var team = DataGetter.GetTeam(TeamId);
+            string actualTeam = team.Name;
+
+            // Assert
+            Assert.True(expectedTeam == actualTeam, "Expected team with ID " + TeamId + " to be " + expectedTeam + " but found " + actualTeam + " instead.");
+        }
     }
 }
