@@ -4,7 +4,6 @@ using FPL.Core.Data;
 using FPL.Core.Helpers;
 using FPL.Core.Model;
 
-[assembly:InternalsVisibleTo("FPL.Core.Tests")]
 namespace FPL.Core
 {
     /// <summary>
