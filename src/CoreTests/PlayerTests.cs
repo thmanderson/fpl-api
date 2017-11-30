@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Core.Data;
+using FPL.Core.Data;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace Core.Tests
+namespace FPL.Core.Data.Tests
 {
     [Trait("TestCategory", "UnitTests")]
     public class PlayerTests
@@ -28,7 +28,7 @@ namespace Core.Tests
             double actualValue = testPlayer.PointsPerGame();
 
             Assert.True(expectedValue == actualValue, 
-                "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
+                "Expected Value for " + testPlayer.FirstName + " " + testPlayer.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
         }
 
         [Fact]
@@ -36,10 +36,10 @@ namespace Core.Tests
         {
             TestSetup();
             double expectedValue = 900;
-            double actualValue = testPlayer.PointsPer90();
+            double actualValue = testPlayer.PointsPerNinety();
 
             Assert.True(expectedValue == actualValue, 
-                "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
+                "Expected Value for " + testPlayer.FirstName + " " + testPlayer.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
         }
 
         [Fact]
@@ -47,10 +47,10 @@ namespace Core.Tests
         {
             TestSetup();
             double expectedValue = 15;
-            double actualValue = testPlayer.PointsPer90PerMillion();
+            double actualValue = testPlayer.PointsPerNinetyPerMillion();
 
             Assert.True(expectedValue == actualValue,
-                "Expected Value for " + testPlayer.Data.FirstName + " " + testPlayer.Data.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
+                "Expected Value for " + testPlayer.FirstName + " " + testPlayer.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
 
         }
     }

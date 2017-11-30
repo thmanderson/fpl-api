@@ -3,11 +3,11 @@
 
 using System;
 using System.Collections.Generic;
-using Core.Data.Detailed;
+using FPL.Core.Data.Detailed;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Core.Data
+namespace FPL.Core.Data
 {
     public class PlayerDataDetailed
     {

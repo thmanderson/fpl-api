@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Core.Data
+namespace FPL.Core.Data
 {
     [Serializable]
-    public class RawFixtureData
+    public class FixtureData
     {
 
         [JsonProperty("id")]

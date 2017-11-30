@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Core.Data.Detailed
+namespace FPL.Core.Data.Detailed
 {
     /// <summary>
     /// Summary of the underlying statistics for the a fixture.

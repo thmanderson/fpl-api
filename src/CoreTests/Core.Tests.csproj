@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>FPL.Core.Tests</AssemblyName>
+
+    <RootNamespace>FPL.Core.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
