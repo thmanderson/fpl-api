@@ -16,11 +16,13 @@ namespace FPL.Core.Tests
             // Arrange & Act
             List<PlayerDataSummary> playerList = DataGetter.GetPlayerSummaryAll().ToList();
 
-            int expectedCount = 569;
+            int lowerExpectedCount = 300;
+            int upperExpectedCount = 700;
             int actualCount = playerList.Count;
 
             // Assert
-            Assert.True(actualCount == expectedCount, "Number of players, " + actualCount + ", is greater than expected value," + expectedCount + ". ");
+            Assert.True(actualCount >= lowerExpectedCount, "Number of players, " + actualCount + ", is less than expected lower limit of," + lowerExpectedCount + ". ");
+            Assert.True(actualCount <= upperExpectedCount, "Number of players, " + actualCount + ", is more than expected upper limit of," + upperExpectedCount + ". ");
         }
 
         [Theory]
