@@ -32,7 +32,7 @@ namespace FPL.Core.Data.Tests
         }
 
         [Fact]
-        public void PointersPer90Test()
+        public void PointsPer90Test()
         {
             TestSetup();
             double expectedValue = 900;
