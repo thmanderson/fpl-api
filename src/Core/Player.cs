@@ -12,11 +12,24 @@ namespace FPL.Core
     public class Player : IPlayer
     {
         public PlayerDataSummary DataSummary { get; private set; }
+
         public PlayerDataDetailed DataDetailed { get; private set; }
+
         public int Id => DataSummary.Id;
+
         public string FirstName => DataSummary.FirstName;
+
         public string SecondName => DataSummary.SecondName;
-        
+
+        ///<summary>Points per game for this player - not including games missed.</summary>
+        public double PointsPerGame => double.Parse(this.DataSummary.PointsPerGame);
+
+        ///<summary>Points for every 90 minutes played for this player.</summary>
+        public double PointsPerNinety => this.DataSummary.Minutes == 0 ? 0 : (this.DataSummary.TotalPoints * 90) / this.DataSummary.Minutes;
+
+        ///<summary>Points per 90 <see cref="PointsPer90"/> per £1m of player cost.</summary>
+        public double PointsPerNinetyPerMillion => this.DataSummary.NowCost == 0 ? 0 : this.PointsPerNinety / this.DataSummary.NowCost;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Player"/> class.
         /// </summary>
@@ -42,53 +55,6 @@ namespace FPL.Core
         public void UpdatePlayerDetails()
         {
             this.DataDetailed = DataGetter.GetPlayerDetails(this.Id);
-        }
-
-        /// <summary>
-        /// Points per game for this player - not including games missed.
-        /// </summary>
-        /// <returns>The average number of points per game.</returns>
-        public double PointsPerGame()
-        {
-            double result = double.Parse(this.DataSummary.PointsPerGame);
-
-            return result;
-        }
-
-        /// <summary>
-        /// Points for every 90 minutes played for this player.
-        /// </summary>
-        /// <returns>The average number of points for every 90 minutes played in total.</returns>
-        public double PointsPerNinety()
-        {
-            double points = this.DataSummary.TotalPoints;
-            double minutes = this.DataSummary.Minutes;
-
-            if (minutes == 0) return 0;
-
-            return (points * 90) / minutes;
-        }
-
-        /// <summary>
-        /// Points per 90 <see cref="PointsPer90"/> per £1m of player cost.
-        /// </summary>
-        /// <returns>The average number of points for every 90 minutes played, for every £1m player cost.</returns>
-        public double PointsPerNinetyPerMillion()
-        {
-            double PP90 = this.PointsPerNinety();
-            double price = this.DataSummary.NowCost;
-
-            if (price == 0) return 0;
-
-            return PP90 / price;
-        }
-
-        public double Form()
-        {
-            throw new NotImplementedException();
-
-            // Make sure we have data for all gameweeks this year.
-            if (this.DataDetailed == null) UpdatePlayerDetails();
         }
     }
 }
