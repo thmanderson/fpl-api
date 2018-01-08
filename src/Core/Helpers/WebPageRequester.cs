@@ -9,7 +9,9 @@ namespace FPL.Core.Helpers
         private static string _HEADERS_ACCEPT_ENCODING   = "gzip, deflate";
         private static string _HEADERS_ACCEPT_LANGUAGE   = "en-gb,en;q=0.5";
         private static string _HEADERS_USER_AGENT        = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"; // just a dummy user agent that looks like a real browser
-        
+        private static string username = "t.mcgrath.anderson@gmail.com";
+        private static string password = "";
+
         public static string Post(string url, string data, ref CookieContainer refCookies)
         {
             return MakeRequest(url, "application/x-www-form-urlencoded", "POST", data, ref refCookies);
@@ -22,14 +24,14 @@ namespace FPL.Core.Helpers
 
         public static JObject GetJObject(string url)
         {
-            CookieContainer cookies = null;
+            CookieContainer cookies = FplAuthenticator.Authenticate(username, password);
             var json = WebPageRequester.Get(url, ref cookies);
             return JObject.Parse(json);
         }
 
         public static JArray GetJArray(string url)
         {
-            CookieContainer cookies = null;
+            CookieContainer cookies = FplAuthenticator.Authenticate(username, password);
             var json = WebPageRequester.Get(url, ref cookies);
             return JArray.Parse(json);
         }
@@ -51,8 +53,7 @@ namespace FPL.Core.Helpers
             req.Method = method;
 
             // Add cookies
-            if (refCookies == null)
-                refCookies = new CookieContainer();
+            if (refCookies == null) refCookies = new CookieContainer();
             req.CookieContainer = refCookies;
             
             if (data != null)

@@ -13,6 +13,7 @@ namespace FPL.Core
         private static string detailed_player_root_page = root_api_page + "/element-summary/";
         private static string fixture_data_page = root_api_page + "/fixtures";
         private static string team_data_page = root_api_page + "/teams";
+        private static string transfer_data_page = root_api_page + "/transfers";
 
         // Player Data Getters
         public static IEnumerable<PlayerDataSummary> GetPlayerSummaryAll()
@@ -67,6 +68,14 @@ namespace FPL.Core
         {
             var jsonData = WebPageRequester.GetJArray(team_data_page);
             return jsonData[TeamId].ToObject<TeamData>();
+        }
+
+        // Transfer Getter
+        public static TransferData GetTransferData()
+        {
+            var jsonData = WebPageRequester.GetJArray(transfer_data_page);
+
+            return jsonData.ToObject<TransferData>();
         }
     }
 }

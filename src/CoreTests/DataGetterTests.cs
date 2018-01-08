@@ -76,5 +76,13 @@ namespace FPL.Core.Tests
             // Assert
             Assert.True(expectedTeam == actualTeam, "Expected team with ID " + TeamId + " to be " + expectedTeam + " but found " + actualTeam + " instead.");
         }
+
+        [Fact]
+        public void CanGetTransferData()
+        {
+            var data = DataGetter.GetTransferData();
+
+            Assert.NotNull(data);
+        }
     }
 }
