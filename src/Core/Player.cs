@@ -44,6 +44,19 @@ namespace FPL.Core
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Player"/> class.
+        /// </summary>
+        /// <param name="PlayerId">Player ID from the official Fantasy Premier League API.</param>
+        /// <param name="GetDetails">If true, will initialize additional details <see cref="PlayerDataDetailed"/>, such as week-by-week score.
+        /// Not recommended if you are creating players in bulk, and these details can be initialized later, <see cref="UpdatePlayerDetails"/>.
+        /// Defaults to <see cref="false"/>.</param>
+        public Player(string firstName, string secondName, bool GetDetails)
+        {
+            this.DataSummary = DataGetter.GetPlayerSummary(firstName, secondName);
+            if (GetDetails && this.DataSummary != null) this.DataDetailed = DataGetter.GetPlayerDetails(this.DataSummary.Id);
+        }
+
+        /// <summary>
         /// Internal constructor for testing with dummy data.
         /// </summary>
         /// <param name="dummySummary">Player summary with dummy values for testing.</param>

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using FPL.Core.Data;
 using FPL.Core.Helpers;
 
-namespace FPL.Core
+namespace FPL.Core.Data
 {
     public static class DataGetter
     {
