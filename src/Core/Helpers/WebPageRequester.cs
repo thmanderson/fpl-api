@@ -9,8 +9,6 @@ namespace FPL.Core.Helpers
         private static string _HEADERS_ACCEPT_ENCODING   = "gzip, deflate";
         private static string _HEADERS_ACCEPT_LANGUAGE   = "en-gb,en;q=0.5";
         private static string _HEADERS_USER_AGENT        = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"; // just a dummy user agent that looks like a real browser
-        private static string username = "t.mcgrath.anderson@gmail.com";
-        private static string password = "";
 
         public static string Post(string url, string data, ref CookieContainer refCookies)
         {
@@ -24,14 +22,14 @@ namespace FPL.Core.Helpers
 
         public static JObject GetJObject(string url)
         {
-            CookieContainer cookies = FplAuthenticator.Authenticate(username, password);
+            CookieContainer cookies = new CookieContainer();
             var json = WebPageRequester.Get(url, ref cookies);
             return JObject.Parse(json);
         }
 
         public static JArray GetJArray(string url)
         {
-            CookieContainer cookies = FplAuthenticator.Authenticate(username, password);
+            CookieContainer cookies = new CookieContainer();
             var json = WebPageRequester.Get(url, ref cookies);
             return JArray.Parse(json);
         }
@@ -58,8 +56,6 @@ namespace FPL.Core.Helpers
             
             if (data != null)
             {
-                // _logger.WriteDebugMessage("WebPageRequester.MakeRequest - Sending data");
-
                 byte[] bytes = System.Text.Encoding.ASCII.GetBytes(data);
                 req.ContentLength = bytes.Length;
 
@@ -70,19 +66,10 @@ namespace FPL.Core.Helpers
                 }
             }
 
-            // _logger.WriteDebugMessage("WebPageRequester.MakeRequest - Reading response");
-
             using (System.Net.HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
             {
-                // if (resp == null)
-                    // _logger.WriteErrorMessage("WebPageRequester.MakeRequest - No response received");
                 System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
                 var strResponse = sr.ReadToEnd().Trim();
-                //_logger.WriteInfoMessage("WebPageRequester.MakeRequest - Response: " + strResponse);
-                //_logger.WriteDebugMessage("WebPageRequester.MakeRequest - Response Content Length: " + resp.ContentLength);
-                //_logger.WriteDebugMessage("WebPageRequester.MakeRequest - Response Content Encoding: " + resp.ContentEncoding);
-                //_logger.WriteDebugMessage("WebPageRequester.MakeRequest - Response Content Type: " + resp.ContentType);
-                //_logger.WriteDebugMessage("WebPageRequester.MakeRequest - Response Character Set: " + resp.CharacterSet);
                 return strResponse;
             }
         }

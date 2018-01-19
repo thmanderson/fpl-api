@@ -69,13 +69,5 @@ namespace FPL.Core
             var jsonData = WebPageRequester.GetJArray(team_data_page);
             return jsonData[TeamId].ToObject<TeamData>();
         }
-
-        // Transfer Getter
-        public static TransferData GetTransferData()
-        {
-            var jsonData = WebPageRequester.GetJArray(transfer_data_page);
-
-            return jsonData.ToObject<TransferData>();
-        }
     }
 }
