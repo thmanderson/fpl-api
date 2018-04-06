@@ -6,8 +6,8 @@ namespace FPL.Core.Model
 {
     public interface IPlayer
     {
-        double PointsPerGame();
-        double PointsPerNinety();
-        double PointsPerNinetyPerMillion();
+        double PointsPerGame { get; }
+        double PointsPerNinety { get; }
+        double PointsPerNinetyPerMillion { get; }
     }
 }

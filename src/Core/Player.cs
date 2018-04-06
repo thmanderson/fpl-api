@@ -11,84 +11,36 @@ namespace FPL.Core
     /// </summary>
     public class Player : IPlayer
     {
+        /// <summary> Summary of this player for the current season. </summary>
         public PlayerDataSummary DataSummary { get; private set; }
-        public PlayerDataDetailed DataDetailed { get; private set; }
+
+        /// <summary> Detailed data for this player, for current and past seasons. </summary>
+        public PlayerDataDetailed DataDetailed { get; set; }
+
+        /// <summary> Player ID. </summary>
         public int Id => DataSummary.Id;
+
+        /// <summary> Players first name. </summary>
         public string FirstName => DataSummary.FirstName;
+
+        /// <summary> Players second name. </summary>
         public string SecondName => DataSummary.SecondName;
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Player"/> class.
-        /// </summary>
-        /// <param name="PlayerId">Player ID from the official Fantasy Premier League API.</param>
-        /// <param name="GetDetails">If true, will initialize additional details <see cref="PlayerDataDetailed"/>, such as week-by-week score.
-        /// Not recommended if you are creating players in bulk, and these details can be initialized later, <see cref="UpdatePlayerDetails"/>.
-        /// Defaults to <see cref="false"/>.</param>
-        public Player(int PlayerId, bool GetDetails = false)
+
+        ///<summary>Points per game for this player - not including games missed.</summary>
+        public double PointsPerGame => double.Parse(this.DataSummary.PointsPerGame);
+
+        ///<summary>Points for every 90 minutes played for this player.</summary>
+        public double PointsPerNinety => this.DataSummary.Minutes == 0 ? 0 : (this.DataSummary.TotalPoints * 90) / this.DataSummary.Minutes;
+
+        ///<summary>Points per 90 <see cref="PointsPer90"/> per £1m of player cost.</summary>
+        public double PointsPerNinetyPerMillion => this.DataSummary.NowCost == 0 ? 0 : this.PointsPerNinety / this.DataSummary.NowCost;
+
+        /// <summary> Internal constructor for testing with dummy data. </summary>
+        /// <param name="DataSummary">Player summary with dummy values for testing.</param>
+        public Player(PlayerDataSummary DataSummary, PlayerDataDetailed DataDetailed = null)
         {
-            this.DataSummary = DataGetter.GetPlayerSummary(PlayerId);
-            if(GetDetails) this.DataDetailed = DataGetter.GetPlayerDetails(PlayerId);
-        }
-
-        /// <summary>
-        /// Internal constructor for testing with dummy data.
-        /// </summary>
-        /// <param name="dummySummary">Player summary with dummy values for testing.</param>
-        public Player(PlayerDataSummary dummySummary)
-        {
-            this.DataSummary = dummySummary;
-        }
-
-        public void UpdatePlayerDetails()
-        {
-            this.DataDetailed = DataGetter.GetPlayerDetails(this.Id);
-        }
-
-        /// <summary>
-        /// Points per game for this player - not including games missed.
-        /// </summary>
-        /// <returns>The average number of points per game.</returns>
-        public double PointsPerGame()
-        {
-            double result = double.Parse(this.DataSummary.PointsPerGame);
-
-            return result;
-        }
-
-        /// <summary>
-        /// Points for every 90 minutes played for this player.
-        /// </summary>
-        /// <returns>The average number of points for every 90 minutes played in total.</returns>
-        public double PointsPerNinety()
-        {
-            double points = this.DataSummary.TotalPoints;
-            double minutes = this.DataSummary.Minutes;
-
-            if (minutes == 0) return 0;
-
-            return (points * 90) / minutes;
-        }
-
-        /// <summary>
-        /// Points per 90 <see cref="PointsPer90"/> per £1m of player cost.
-        /// </summary>
-        /// <returns>The average number of points for every 90 minutes played, for every £1m player cost.</returns>
-        public double PointsPerNinetyPerMillion()
-        {
-            double PP90 = this.PointsPerNinety();
-            double price = this.DataSummary.NowCost;
-
-            if (price == 0) return 0;
-
-            return PP90 / price;
-        }
-
-        public double Form()
-        {
-            throw new NotImplementedException();
-
-            // Make sure we have data for all gameweeks this year.
-            if (this.DataDetailed == null) UpdatePlayerDetails();
+            this.DataSummary = DataSummary;
+            if (DataDetailed != null) this.DataDetailed = DataDetailed;
         }
     }
 }

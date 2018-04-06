@@ -10,19 +10,26 @@ but I wanted to try out something specific, so just did it anyway.
 
 
 ----
-#### History
 
-##### Current Version - v0 - In Progress
+#### Current Version - v0 - In Progress
 
 Currently just working on actually how to grab all the relevant data, and how to organise it in a
 useful way. Planning to 'release' this when all the underlying data is there and usable in a nice
 way, I'm happy with the structure of the projects, and it's all got proper testing in place.
 
+
 ----
-#### References
+
+#### To Do:
+
+Need to find a way to authenticate the session. I've tried messing around with it, but no luck. 
+Without this, can't do any detailed stuff my specific team, without manual work.
+
+----
+#### Links
 
 1. Official FPL Site: https://fantasy.premierleague.com/
 2. Official FPL API: https://fantasy.premierleague.com/drf/* - e.g. /drf/element-summary/1
 which I found here: https://github.com/bobbymond/FantasyPremierLeagueAPI/issues/3
-2. Adapted some of the original methods for grabbing data from here: 
+2. Adapted some of the methods for grabbing data from here: 
 https://github.com/bobbymond/FantasyPremierLeagueAPI

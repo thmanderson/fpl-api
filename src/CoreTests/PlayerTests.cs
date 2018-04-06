@@ -25,18 +25,18 @@ namespace FPL.Core.Data.Tests
         {
             TestSetup();
             double expectedValue = 150;
-            double actualValue = testPlayer.PointsPerGame();
+            double actualValue = testPlayer.PointsPerGame;
 
             Assert.True(expectedValue == actualValue, 
                 "Expected Value for " + testPlayer.FirstName + " " + testPlayer.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
         }
 
         [Fact]
-        public void PointersPer90Test()
+        public void PointsPer90Test()
         {
             TestSetup();
             double expectedValue = 900;
-            double actualValue = testPlayer.PointsPerNinety();
+            double actualValue = testPlayer.PointsPerNinety;
 
             Assert.True(expectedValue == actualValue, 
                 "Expected Value for " + testPlayer.FirstName + " " + testPlayer.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
@@ -47,7 +47,7 @@ namespace FPL.Core.Data.Tests
         {
             TestSetup();
             double expectedValue = 15;
-            double actualValue = testPlayer.PointsPerNinetyPerMillion();
+            double actualValue = testPlayer.PointsPerNinetyPerMillion;
 
             Assert.True(expectedValue == actualValue,
                 "Expected Value for " + testPlayer.FirstName + " " + testPlayer.SecondName + ": " + expectedValue + ", Actual Value: " + actualValue);
