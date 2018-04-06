@@ -36,10 +36,10 @@ namespace FPL.Core.Data.Detailed
         public string KickoffTime { get; set; }
 
         [JsonProperty("team_h_score")]
-        public object TeamHScore { get; set; }
+        public int TeamHScore { get; set; }
 
         [JsonProperty("team_a_score")]
-        public object TeamAScore { get; set; }
+        public int TeamAScore { get; set; }
 
         [JsonProperty("finished")]
         public bool Finished { get; set; }
