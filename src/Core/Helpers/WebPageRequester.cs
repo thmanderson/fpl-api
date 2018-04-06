@@ -8,7 +8,7 @@ namespace FPL.Core.Helpers
         private static string _HEADERS_ACCEPT            = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
         private static string _HEADERS_ACCEPT_ENCODING   = "gzip, deflate";
         private static string _HEADERS_ACCEPT_LANGUAGE   = "en-gb,en;q=0.5";
-        private static string _HEADERS_USER_AGENT        = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"; // just a dummy user agent that looks like a real browser
+        private static string _HEADERS_USER_AGENT        = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0";
 
         public static string Post(string url, string data, ref CookieContainer refCookies)
         {

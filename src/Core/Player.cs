@@ -11,14 +11,19 @@ namespace FPL.Core
     /// </summary>
     public class Player : IPlayer
     {
+        /// <summary> Summary of this player for the current season. </summary>
         public PlayerDataSummary DataSummary { get; private set; }
 
-        public PlayerDataDetailed DataDetailed { get; private set; }
+        /// <summary> Detailed data for this player, for current and past seasons. </summary>
+        public PlayerDataDetailed DataDetailed { get; set; }
 
+        /// <summary> Player ID. </summary>
         public int Id => DataSummary.Id;
 
+        /// <summary> Players first name. </summary>
         public string FirstName => DataSummary.FirstName;
 
+        /// <summary> Players second name. </summary>
         public string SecondName => DataSummary.SecondName;
 
         ///<summary>Points per game for this player - not including games missed.</summary>
@@ -30,44 +35,12 @@ namespace FPL.Core
         ///<summary>Points per 90 <see cref="PointsPer90"/> per £1m of player cost.</summary>
         public double PointsPerNinetyPerMillion => this.DataSummary.NowCost == 0 ? 0 : this.PointsPerNinety / this.DataSummary.NowCost;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Player"/> class.
-        /// </summary>
-        /// <param name="PlayerId">Player ID from the official Fantasy Premier League API.</param>
-        /// <param name="GetDetails">If true, will initialize additional details <see cref="PlayerDataDetailed"/>, such as week-by-week score.
-        /// Not recommended if you are creating players in bulk, and these details can be initialized later, <see cref="UpdatePlayerDetails"/>.
-        /// Defaults to <see cref="false"/>.</param>
-        public Player(int PlayerId, bool GetDetails = false)
+        /// <summary> Internal constructor for testing with dummy data. </summary>
+        /// <param name="DataSummary">Player summary with dummy values for testing.</param>
+        public Player(PlayerDataSummary DataSummary, PlayerDataDetailed DataDetailed = null)
         {
-            this.DataSummary = DataGetter.GetPlayerSummary(PlayerId);
-            if(GetDetails) this.DataDetailed = DataGetter.GetPlayerDetails(PlayerId);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Player"/> class.
-        /// </summary>
-        /// <param name="PlayerId">Player ID from the official Fantasy Premier League API.</param>
-        /// <param name="GetDetails">If true, will initialize additional details <see cref="PlayerDataDetailed"/>, such as week-by-week score.
-        /// Not recommended if you are creating players in bulk, and these details can be initialized later, <see cref="UpdatePlayerDetails"/>.
-        /// Defaults to <see cref="false"/>.</param>
-        public Player(string firstName, string secondName, bool GetDetails)
-        {
-            this.DataSummary = DataGetter.GetPlayerSummary(firstName, secondName);
-            if (GetDetails && this.DataSummary != null) this.DataDetailed = DataGetter.GetPlayerDetails(this.DataSummary.Id);
-        }
-
-        /// <summary>
-        /// Internal constructor for testing with dummy data.
-        /// </summary>
-        /// <param name="dummySummary">Player summary with dummy values for testing.</param>
-        public Player(PlayerDataSummary dummySummary)
-        {
-            this.DataSummary = dummySummary;
-        }
-
-        public void UpdatePlayerDetails()
-        {
-            this.DataDetailed = DataGetter.GetPlayerDetails(this.Id);
+            this.DataSummary = DataSummary;
+            if (DataDetailed != null) this.DataDetailed = DataDetailed;
         }
     }
 }

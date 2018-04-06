@@ -8,7 +8,7 @@ namespace TestHarness
     {
         static void Main(string[] args)
         {
-            var playerFactory = new PlayerFactory();
+            var playerFactory = new PlayerGetter();
             var myPlayers = new List<IPlayer>();
 
             var myPlayerNames = new List<string> {
