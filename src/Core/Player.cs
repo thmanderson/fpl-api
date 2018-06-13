@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using FPL.Core.Data;
-using FPL.Core.Helpers;
 using FPL.Core.Model;
 
 namespace FPL.Core
