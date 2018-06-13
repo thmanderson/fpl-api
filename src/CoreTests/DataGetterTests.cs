@@ -29,7 +29,7 @@ namespace FPL.Core.Tests
 
         [Theory]
         [InlineData(1, "Cech")]
-        [InlineData(44, "Pugh")]
+        [InlineData(44, "Arter")]
         public void FindPlayerSummaryByIdWorks(int PlayerId, string ExpectedName)
         {
             // Arrange & Act
